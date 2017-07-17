@@ -1,7 +1,7 @@
 function apt-install {
     for pkg in $@; do
         echo -e "[APT-GET] Installing package $pkg..."
-        sudo apt-get install -yq $pkg
+        apt-get install -yq $pkg
     done
 }
 
@@ -16,9 +16,9 @@ function apt-install-if-needed {
 
 
 function package-not-installed {
-    test -z "$(sudo dpkg -s $1 2> /dev/null | grep Status)"
+    test -z "$(dpkg -s $1 2> /dev/null | grep Status)"
 }
 
-sudo apt-get -y update
-sudo apt-get -y upgrade
-sudo apt-get -y dist-upgrade
+apt-get -y update
+apt-get -y upgrade
+apt-get -y dist-upgrade

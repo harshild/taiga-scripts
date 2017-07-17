@@ -16,8 +16,8 @@ if [ ! -e ~/.setup/postgresql ]; then
     apt-install-if-needed postgresql-9.5 postgresql-contrib-9.5 \
         postgresql-doc-9.5 postgresql-server-dev-9.5
 
-    sudo -u postgres createuser --superuser $USER &> /dev/null
-    sudo -u postgres createdb $USER &> /dev/null
+    postgres createuser --superuser $USER &> /dev/null
+    postgres createdb $USER &> /dev/null
 
     touch ~/.setup/postgresql
 fi

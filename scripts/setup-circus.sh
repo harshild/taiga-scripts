@@ -31,8 +31,8 @@ PYTHONPATH=/home/$USER/.local/lib/python3.4/site-packages
 EOF
 
 if [ ! -e ~/.setup/circus ]; then
-    sudo mv /tmp/taiga-circus.ini /etc/circus/conf.d/taiga.ini
+    mv /tmp/taiga-circus.ini /etc/circus/conf.d/taiga.ini
 
-    sudo service circusd restart
+    service circusd restart
     touch ~/.setup/circus
 fi

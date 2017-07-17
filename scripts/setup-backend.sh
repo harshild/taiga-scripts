@@ -67,7 +67,7 @@ else
     python manage.py migrate --noinput
     python manage.py compilemessages
     python manage.py collectstatic --noinput
-    sudo service circus restart
+    service circus restart
     popd
 fi
 

@@ -72,3 +72,15 @@ else
 fi
 
 popd
+
+function createdb-if-needed {
+    for dbname in $@; do
+        $(psql -l | grep -q "$dbname") || createdb "$dbname"
+    done
+}
+
+function dropdb-if-needed {
+    for dbname in $@; do
+        $(psql -l | grep -q "$dbname") && dropdb "$dbname"
+    done
+}

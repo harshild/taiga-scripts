@@ -30,7 +30,8 @@ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 EOF
 
 if [ ! -e ~/taiga-back ]; then
-    createdb-if-needed taiga
+    $(psql -l | grep -q "taiga") || createdb "taiga"
+
     git clone https://github.com/taigaio/taiga-back.git taiga-back
 
     pushd ~/taiga-back
@@ -72,15 +73,3 @@ else
 fi
 
 popd
-
-function createdb-if-needed {
-    for dbname in $@; do
-        $(psql -l | grep -q "$dbname") || createdb "$dbname"
-    done
-}
-
-function dropdb-if-needed {
-    for dbname in $@; do
-        $(psql -l | grep -q "$dbname") && dropdb "$dbname"
-    done
-}

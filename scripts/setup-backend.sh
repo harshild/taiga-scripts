@@ -30,7 +30,7 @@ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 EOF
 
 if [ ! -e ~/taiga-back ]; then
-    $(psql -l | grep -q "taiga") || createdb "taiga"
+    su - postgres -c "createdb "taiga""
 
     git clone https://github.com/taigaio/taiga-back.git taiga-back
 

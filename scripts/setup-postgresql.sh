@@ -13,7 +13,7 @@ function dropdb-if-needed {
 }
 
 if [ ! -e ~/.setup/postgresql ]; then
-    apt-install-if-needed postgresql-9.5 postgresql-contrib-9.5 \
+    apt-get install postgresql-9.5 postgresql-contrib-9.5 \
         postgresql-doc-9.5 postgresql-server-dev-9.5
 
     su - postgres createuser --superuser $USER &> /dev/null
